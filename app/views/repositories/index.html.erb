@@ -1,0 +1,22 @@
+<h1> GitHub Public Respositories Search </h1>
+
+<div style="margin-left:10px">
+  <%= form_tag(repositories_path, method: :get) do %>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= submit_tag('Search')%>
+  <% end %>
+</div>
+
+<h1> Respositories </h1>
+<%if @repositories.present? && @repositories[:items].present? %>
+  <ul>
+    <% @repositories[:items].each do |repository| %>
+      <li>
+        <%= repository[:full_name] %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p> Nothing To Show </p>
+<% end %>
