@@ -6,7 +6,9 @@ module RepositoriesHelper
     end
 
     def get_repositories params
-      @client.get('/search/repositories', query: {q: "#{params[:search]} in:name"})
+      if params[:search].present?
+        @client.get('/search/repositories', query: {q: "#{params[:search]} in:name"})
+      end
     end
 
   end
